@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 "# Trucking-Efficiency-Prediction" 
 =======
 # 📌 Improving Dock Efficiency and Predicting Delivery Delays in Logistics
