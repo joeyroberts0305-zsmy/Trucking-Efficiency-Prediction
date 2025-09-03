@@ -40,6 +40,32 @@ I observed non-linear patterns and interaction effects that linear regression ca
 
 This hybrid approach will help operations teams proactively identify high-risk deliveries and respond more effectively.
 
+## 📈 Updated Findings: Delay Prediction & Bottleneck Analysis
+Delay Prediction Improvements
+After validating the shortcomings of the linear regression model through residual analysis, we implemented multiple ensemble models to enhance predictive performance. The best-performing model was a stacked ensemble combining:
+ - Random Forest
+ - Gradient Boosting
+ - XGBoost
+ - Linear Regression (meta-learner)
+ - Stacking Model Performance:
+   - MAE: ~0.59
+   - RMSE: ~0.72
+   - R²: ~0.78
+This model outperformed others in capturing complex, nonlinear delay patterns, especially for higher-variance cases.
+💡 SHAP-Based Model Explainability
+* SHAP (SHapley Additive exPlanations) was used to interpret the feature importances from the best-performing ensemble models. Key insights:
+* Time difference vs. OSRM was the dominant predictor of delay.
+* OSRM time ratio and segment_actual_time also had strong contributions.
+* Temporal features like trip_hour showed moderate influence during peak operating times.
+  
+🚦 Bottleneck Detection at Docks
+Using the actual delay (segment_actual_time - segment_osrm_time), we computed average delay, median delay, and delay rate for each source and destination dock.
+Key Findings:
+- Some docks had a delay rate of 1.0, meaning every shipment was delayed, signaling urgent need for intervention.
+- High-volume + high-delay locations were flagged as critical bottlenecks.
+- These bottlenecks were visualized and ranked to support operational triage.
+- This analysis can directly inform resourcing, rerouting, or re-sequencing strategies.  
+
 ## 🚀 How to Run the Project
 
 ```bash
